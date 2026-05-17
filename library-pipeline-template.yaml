@@ -15,7 +15,7 @@ parameters:
   default: 'Default'
   type: string
 
- -name: 'environments'
+- name: 'environments'
   default: 'Test'
   type: string 
   

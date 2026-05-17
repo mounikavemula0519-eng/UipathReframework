@@ -9,11 +9,11 @@ steps:
 - checkout: self
 
 # Install UiPath CLI
-- task: UiPathInstallPlatform@4
+- task: UiPathInstallPlatform@6
   displayName: Install UiPath Platform
 
 # Pack the automation
-- task: UiPathPack@4
+- task: UiPathPack@6
   displayName: Pack UiPath Project
   inputs:
     versionType: 'AutoVersion'
@@ -21,7 +21,7 @@ steps:
     outputType: 'Process'
 
 # Deploy package to Orchestrator
-- task: UiPathDeploy@4
+- task: UiPathDeploy@6
   displayName: Deploy Package
   inputs:
     orchestratorConnection: 'UiPath-Orchestrator'

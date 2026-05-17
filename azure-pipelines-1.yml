@@ -1,0 +1,15 @@
+trigger:
+- main
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - script: echo "Building"
+
+- stage: Deploy
+  jobs:
+  - job: DeployJob
+    steps:
+    - script: echo "Deploying"

@@ -15,6 +15,9 @@ parameters:
   default: 'Default'
   type: string
 
+ -name: 'environments'
+  default: 'Test'
+  type: string 
   
 # This pipeline is broken into stages for the approval functionality. Stages are ran independantly, which means the pipeline can pause until the approval is received. 
 stages:

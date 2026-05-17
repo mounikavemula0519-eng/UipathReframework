@@ -1,29 +1,15 @@
 trigger:
 - main
 
-pool:
-  vmImage: 'windows-latest'
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - script: echo "Building"
 
-steps:
-
-- checkout: self
-
-# Install UiPath CLI
-- task: UiPathInstallPlatform@6
-  displayName: Install UiPath Platform
-
-# Pack the automation
-- task: UiPathPack@6
-  displayName: Pack UiPath Project
-  inputs:
-    versionType: 'AutoVersion'
-    projectJsonPath: 'project.json'
-    outputType: 'Process'
-
-# Deploy package to Orchestrator
-- task: UiPathDeploy@6
-  displayName: Deploy Package
-  inputs:
-    orchestratorConnection: 'UiPath-Orchestrator'
-    packagesPath: '$(Build.ArtifactStagingDirectory)'
-    folderName: 'Shared'
+- stage: Deploy
+  jobs:
+  - job: DeployJob
+    steps:
+    - script: echo "Deploying"

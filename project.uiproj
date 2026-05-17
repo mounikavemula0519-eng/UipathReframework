@@ -1,0 +1,6 @@
+{
+  "Name": "cicd",
+  "ProjectType": "Process",
+  "Description": "Robotic Enterprise Framework",
+  "MainFile": "Main.xaml"
+}

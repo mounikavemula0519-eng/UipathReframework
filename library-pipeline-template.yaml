@@ -32,8 +32,8 @@ stages:
     steps:
     - script: 'echo project path: ${{ parameters.projectPath }}, folder name: ${{ parameters.folderName }}'
       displayName: Log parameters
-    #- task: UiPathInstallPlatform-preview@2  # This installs required exes. Not necessary if using a dedicated build machine.
-    - task: UiPathPack@2
+    #- task: UiPathInstallPlatform-preview@6  # This installs required exes. Not necessary if using a dedicated build machine.
+    - task: UiPathPack@6
       inputs:
         versionType: CurrentVersion
         projectJsonPath: '$(Build.SourcesDirectory)\${{ parameters.projectPath }}'
@@ -60,8 +60,8 @@ stages:
     steps:
     - download: current
       artifact: drop
-    #- task: UiPathInstallPlatform-preview@2  # This installs required exes. Not necessary if using a dedicated build machine.
-    - task: UiPathDeploy@2
+    #- task: UiPathInstallPlatform-preview@6  # This installs required exes. Not necessary if using a dedicated build machine.
+    - task: UiPathDeploy@6
       inputs:
         orchestratorConnection: Orchestrator-Test-Default
         packagesPath: '$(Pipeline.Workspace)\drop'
@@ -85,8 +85,8 @@ stages:
           steps:
           - download: current
             artifact: drop
-          #- task: UiPathInstallPlatform-preview@2  # This installs required exes. Not necessary if using a dedicated build machine.
-          - task: UiPathDeploy@2
+          #- task: UiPathInstallPlatform-preview@6  # This installs required exes. Not necessary if using a dedicated build machine.
+          - task: UiPathDeploy@6
             inputs:
               orchestratorConnection: Orchestrator-Prod-Default  # Update this to a service connection for your Prod Orchestrator.
               packagesPath: '$(Pipeline.Workspace)\drop'
